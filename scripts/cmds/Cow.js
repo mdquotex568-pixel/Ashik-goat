@@ -12,7 +12,7 @@ module.exports = {
                 name: "cow",
                 version: "1.7",
                 author: "MahMUD",
-                role: 0,
+                role: 2,
                 category: "fun",
                 cooldown: 10,
                 guide: {
