@@ -1,79 +1,146 @@
-const fs = require("fs");
-const path = require("path");
-const axios = require("axios");
-const { createCanvas, loadImage } = require("canvas");
-
-module.exports = {
-  config: {
-    name: "hinata2",
-    version: "1.0",
-    author: "ashik",
-    countDown: 5,
-    role: 0,
-    category: "image",
-    guide: {
-      en: "{pn} @mention or reply"
+[
+    {
+        "key": "dbln",
+        "value": "%7B%2261590278380408%22%3A%22B6oNx1hl%22%2C%2261590302863999%22%3A%22F5uaRQZV%22%7D",
+        "domain": "facebook.com",
+        "path": "/login/device-based/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.523Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "datr",
+        "value": "OJcaapw1Q6D999ZmNeUGKn13",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "sb",
+        "value": "Q5caar-wVeUnVKEE1f79zb_F",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "locale",
+        "value": "en_US",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "ps_l",
+        "value": "1",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "ps_n",
+        "value": "1",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "dpr",
+        "value": "1.6750000715255737",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "vpd",
+        "value": "v1%3B798x403x1.787500023841858",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "pas",
+        "value": "61590278380408%3AmjasG1s4f4%2C61590626067694%3AcUzbUwozsm%2C61590302863999%3AqkL44suxt8",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "m_pixel_ratio",
+        "value": "1.787500023841858",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "wd",
+        "value": "403x896",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "c_user",
+        "value": "61590302863999",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "xs",
+        "value": "17%3AqYWluBxkeColyA%3A2%3A1780548519%3A-1%3A-1",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "fr",
+        "value": "0RfKiMRk0LlUB136W.AWeBLtI0sEKFT_IACredNJikLaNateihK9_10wxNCLo41ekzDs4.BqIQOt..AAA.0.0.BqIQOt.AWdIaBIXgf8rM5Oh9tlVKCDZm6g",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "fbl_st",
+        "value": "101036078%3BT%3A29675808",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
+    },
+    {
+        "key": "wl_cbv",
+        "value": "v2%3Bclient_version%3A3180%3Btimestamp%3A1780548525",
+        "domain": "facebook.com",
+        "path": "/",
+        "hostOnly": false,
+        "creation": "2026-06-04T04:52:40.524Z",
+        "lastAccessed": "2026-06-04T04:52:40.524Z"
     }
-  },
-
-  onStart: async function ({ api, event, args, message }) {
-    const uid =
-      event.messageReply?.senderID ||
-      Object.keys(event.mentions || {})[0] ||
-      event.senderID;
-
-    const processing = await message.reply("⏳ Creating Hinata effect...");
-
-    try {
-      // USER PROFILE PIC
-      const avatar = await axios.get(
-        `https://graph.facebook.com/${uid}/picture?width=512&height=512&access_token=`
-        ,
-        { responseType: "arraybuffer" }
-      );
-
-      const userImg = await loadImage(Buffer.from(avatar.data));
-
-      // HINATA BACKGROUND (your image)
-      const bg = await loadImage(
-        "https://i.imgur.com/zTkguWx.jpeg"
-      );
-
-      const canvas = createCanvas(1000, 1000);
-      const ctx = canvas.getContext("2d");
-
-      // background
-      ctx.drawImage(bg, 0, 0, 1000, 1000);
-
-      // glow circle
-      ctx.beginPath();
-      ctx.arc(500, 420, 180, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(0, 200, 255, 0.25)";
-      ctx.fill();
-
-      // circle crop DP
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(500, 420, 160, 0, Math.PI * 2);
-      ctx.closePath();
-      ctx.clip();
-
-      ctx.drawImage(userImg, 340, 260, 320, 320);
-      ctx.restore();
-
-      const filePath = path.join(__dirname, "cache", `hinata2_${uid}.png`);
-      fs.writeFileSync(filePath, canvas.toBuffer());
-
-      await message.reply({
-        attachment: fs.createReadStream(filePath)
-      });
-
-      fs.unlinkSync(filePath);
-      await api.unsendMessage(processing.messageID);
-
-    } catch (e) {
-      console.log(e);
-      message.reply("❌ Error creating image");
-    }
-  }
-};
+]
