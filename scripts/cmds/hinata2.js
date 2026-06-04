@@ -6,61 +6,67 @@ const { createCanvas, loadImage } = require("canvas");
 module.exports = {
   config: {
     name: "hinata2",
-    version: "1.0",
+    version: "1.1",
     author: "ashik",
     countDown: 5,
     role: 0,
     category: "image",
-    guide: {
-      en: "{pn} @mention or reply"
-    }
+    guide: { en: "{pn} @mention/reply" }
   },
 
-  onStart: async function ({ api, event, args, message }) {
+  onStart: async function ({ api, event, message }) {
     const uid =
       event.messageReply?.senderID ||
       Object.keys(event.mentions || {})[0] ||
       event.senderID;
 
-    const processing = await message.reply("⏳ Creating Hinata effect...");
+    const loading = await message.reply("⏳ Creating image...");
 
     try {
-      // USER PROFILE PIC
-      const avatar = await axios.get(
-        `https://graph.facebook.com/${uid}/picture?width=512&height=512&access_token=`
-        ,
-        { responseType: "arraybuffer" }
-      );
+      // ✅ FIXED PROFILE PIC (HD fallback)
+      const avatarURL = `https://graph.facebook.com/${uid}/picture?width=720&height=720`;
+      const avatarBuffer = await axios.get(avatarURL, { responseType: "arraybuffer" });
+      const avatar = await loadImage(Buffer.from(avatarBuffer.data));
 
-      const userImg = await loadImage(Buffer.from(avatar.data));
+      // Hinata BG
+      const bg = await loadImage("https://i.imgur.com/zTkguWx.jpeg");
 
-      // HINATA BACKGROUND (your image)
-      const bg = await loadImage(
-        "https://i.imgur.com/zTkguWx.jpeg"
-      );
-
-      const canvas = createCanvas(1000, 1000);
+      const canvas = createCanvas(900, 900);
       const ctx = canvas.getContext("2d");
 
-      // background
-      ctx.drawImage(bg, 0, 0, 1000, 1000);
+      // BG
+      ctx.drawImage(bg, 0, 0, 900, 900);
 
-      // glow circle
+      // 🔥 SMALLER DP POSITION FIX
+      const centerX = 450;
+      const centerY = 380;
+      const radius = 120; // 👉 ছোট করা হয়েছে (fix)
+
+      // glow
       ctx.beginPath();
-      ctx.arc(500, 420, 180, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(0, 200, 255, 0.25)";
+      ctx.arc(centerX, centerY, radius + 10, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(0,200,255,0.25)";
       ctx.fill();
 
-      // circle crop DP
+      // circle clip (SMALL FIX)
       ctx.save();
       ctx.beginPath();
-      ctx.arc(500, 420, 160, 0, Math.PI * 2);
+      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
       ctx.closePath();
       ctx.clip();
 
-      ctx.drawImage(userImg, 340, 260, 320, 320);
+      // USER IMAGE (FIX SCALE)
+      ctx.drawImage(
+        avatar,
+        centerX - radius,
+        centerY - radius,
+        radius * 2,
+        radius * 2
+      );
+
       ctx.restore();
 
+      // SAVE
       const filePath = path.join(__dirname, "cache", `hinata2_${uid}.png`);
       fs.writeFileSync(filePath, canvas.toBuffer());
 
@@ -69,11 +75,11 @@ module.exports = {
       });
 
       fs.unlinkSync(filePath);
-      await api.unsendMessage(processing.messageID);
+      await api.unsendMessage(loading.messageID);
 
     } catch (e) {
       console.log(e);
-      message.reply("❌ Error creating image");
+      message.reply("❌ Failed to generate image");
     }
   }
 };
