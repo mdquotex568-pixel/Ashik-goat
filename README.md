@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/Wzz3wDu.jpeg" alt="banner">
+<img src="https://i.imgur.com/yfrka88.jpeg" alt="banner">
 <h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px">   ✰𝗣𝗢𝗢𝗞𝗜𝗘☆𝘾𝙃𝘼𝙏☆𝘽𝙊𝙏✰𝗢𝗙𝗙𝗜𝗖𝗜𝗔𝗟✰🌐</h1>
 <!-- Github README -->
 
