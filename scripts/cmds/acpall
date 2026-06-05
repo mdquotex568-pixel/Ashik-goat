@@ -1,0 +1,92 @@
+module.exports = {
+  config: {
+    name: "acpall",
+    aliases: ["acceptall"],
+    version: "1.0",
+    author: "ashik",
+    countDown: 5,
+    role: 2,
+    shortDescription: "Accept all friend requests",
+    longDescription: "Automatically accept all pending friend requests",
+    category: "Utility"
+  },
+
+  onStart: async function ({ api, event }) {
+    try {
+      const form = {
+        av: api.getCurrentUserID(),
+        fb_api_req_friendly_name: "FriendingCometFriendRequestsRootQueryRelayPreloader",
+        fb_api_caller_class: "RelayModern",
+        doc_id: "4499164963466303",
+        variables: JSON.stringify({
+          input: { scale: 3 }
+        })
+      };
+
+      const response = await api.httpPost(
+        "https://www.facebook.com/api/graphql/",
+        form
+      );
+
+      const requests =
+        JSON.parse(response)?.data?.viewer?.friending_possibilities?.edges || [];
+
+      if (!requests.length) {
+        return api.sendMessage(
+          "✅ No pending friend requests found.",
+          event.threadID
+        );
+      }
+
+      let accepted = 0;
+      let failed = 0;
+
+      for (const user of requests) {
+        try {
+          const acceptForm = {
+            av: api.getCurrentUserID(),
+            fb_api_req_friendly_name:
+              "FriendingCometFriendRequestConfirmMutation",
+            fb_api_caller_class: "RelayModern",
+            doc_id: "3147613905362928",
+            variables: JSON.stringify({
+              input: {
+                source: "friends_tab",
+                actor_id: api.getCurrentUserID(),
+                friend_requester_id: user.node.id,
+                client_mutation_id: Math.random()
+                  .toString(36)
+                  .substring(2, 15)
+              },
+              scale: 3,
+              refresh_num: 0
+            })
+          };
+
+          const res = await api.httpPost(
+            "https://www.facebook.com/api/graphql/",
+            acceptForm
+          );
+
+          const data = JSON.parse(res);
+
+          if (data.errors) failed++;
+          else accepted++;
+        } catch {
+          failed++;
+        }
+      }
+
+      return api.sendMessage(
+        `✅ Accepted: ${accepted}\n❌ Failed: ${failed}`,
+        event.threadID
+      );
+    } catch (err) {
+      console.log(err);
+      return api.sendMessage(
+        "❌ Failed to fetch friend requests.",
+        event.threadID
+      );
+    }
+  }
+};
