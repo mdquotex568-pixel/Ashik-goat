@@ -35,6 +35,8 @@ https://youtu.be/zp61jH98vSQ?si=vbYqOqGOUQye9Qhu
 Telegram channel must join
 https://t.me/ashikgod
 
+
+Massanger group:https://m.me/j/AbZIF6GWRSBTHmQt/?send_source=gc%3Acopy_invite_link_c
 ━━━━━━━━━━━━━━━
 💖 Thanks For Using My Bot
 🚀 Fork & Enjoy
