@@ -24,7 +24,9 @@ module.exports = {
 🌐 𝗢𝗙𝗙𝗜𝗖𝗜𝗔𝗟 𝗚𝗜𝗧𝗛𝗨𝗕
 🔗  https://github.com/mdquotex568-pixel/Ashik-goat.git
 ━━━━━━━━━━━
-🎥 𝗩𝗜𝗗𝗘𝗢 𝗧𝗨𝗧𝗢𝗥𝗜𝗔𝗟 📺 https://youtu.be/_Qb7Pq0Xavs?si=-MaOtPPnBPVSbIFX
+🎥 𝗩𝗜𝗗𝗘𝗢 𝗧𝗨𝗧𝗢𝗥𝗜𝗔𝗟 📺 https://youtu.be/zp61jH98vSQ?si=vbYqOqGOUQye9Qhu
+━━━━━━━━━━
+𝘁𝗲𝗹𝗲𝗴𝗿𝗮𝗺 𝗰𝗵𝗮𝗻𝗻𝗲𝗹: https://t.me/ashikgod
 ━━━━━━━━━━
 𝐀𝐒𝐇𝐈𝐊 𝗚𝗢𝗔𝗧 𝗕𝗢𝗧 𝗩𝟮
 ✦━━━━━━━━━✦
